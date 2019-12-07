@@ -5,7 +5,7 @@ define('SSH_PORT', '22'); //your ssh port, defailt is "22"
 define('SSH_USER', 'pi'); //your ssh username, default is "pi"
 define('SSH_PASS', 'raspberry'); //your ssh password, default is "raspberry"
 
-define('LOGIN_REQUIRED', false); //set to "true" if you want to enable a login system, or "false" to disable it
+define('LOGIN_REQUIRED', true); //set to "true" if you want to enable a login system, or "false" to disable it
 define('LOGIN_USER', 'pi'); //set username for login
 define('LOGIN_PASS', 'raspberry'); //set password for login
 
