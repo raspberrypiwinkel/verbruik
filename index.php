@@ -183,7 +183,7 @@ $(function() {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Raspberrypiwinkel.nl Verbruiks App</a>
+				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Verbruiks App</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -200,7 +200,7 @@ include_once('./include/menu.php');
 			<h3 class="panel-title">Stroom verbruik vandaag</h3>
 		</div>
 		<div class="panel-body">
-
+			<div id="day" style="height:300px" class="span9"></div>
 		</div>
 	</div>
 
@@ -209,6 +209,7 @@ include_once('./include/menu.php');
 			<h3 class="panel-title">Gas verbruik vandaag/h3>
 		</div>
 		<div class="panel-body">
+			<div id="day" style="height:300px" class="span9"></div>
 		</div>
 	</div>
 
