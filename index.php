@@ -1,82 +1,4 @@
 <?php
-// Get average functions and all that stuff
-include 'lib/functions.php';
-// Load the configuration
-$config = getConfig();
-// Load the temperature.log file
-$temperatureFile = file_get_contents('temperature.log');
-// Regex to capture format: 2013-07-22T21:30:01+0200;46.5
-$regex = "/^((?:[0-9]{2,4}-?){3})T((?:[0-9]{2}:?){3}).*?;([0-9.]*$)/im";
-preg_match_all($regex, $temperatureFile, $result);
-// Prepare the values
-$values = $result[3];
-$floatValues = array();
-foreach ($values as $value) {
-	$floatValue = floatval($value);
-
-	// Conversation to farenheit?
-	if ($config['unit'] == 'f') {
-		$floatValue = $floatValue * 9 / 5 + 32;	// Conversion to Farenheit
-	}
-
-	$floatValues[] = $floatValue;
-}
-/* get the updatetime from config and calc base 24*60/update
- added by frama */
-$countsPerDay = 24*60/($config['updatetime']);
-/*
-echo "updatetime ".$config['updatetime'];
-#echo  "EintrÃ¤ge per Tag: ".$countsPerDay;
-$arrl = count($floatValues);
-echo "Länge: ".$arrl;
-echo " Inhalt: ".$floatValues[$arrl-1]." - ".$floatValues[$arrl-2];
-$times = $result[1];
-$timeValues = array();
-foreach ($times as $value) {
-        $timeValue = $value;
-        $timeValues[] = $timeValue;
-}
-$arrl = count($timeValues);
-echo " Länge: ".$arrl;
-echo " Inhalt: ".$timeValues[$arrl-1]." - ".$timeValues[$arrl-2];
-echo " Inhalt: ".$timeValues[$arrl-$countsPerDay ]." - ".$timeValues[$arrl-$countsPerDay];
-$times = $result[2];
-$timeValues = array();
-foreach ($times as $value) {
-        $timeValue = $value;
-        $timeValues[] = $timeValue;
-}
-$arrl = count($timeValues);
-echo " Länge: ".$arrl;
-echo " Inhalt: ".$timeValues[$arrl-1]." - ".$timeValues[$arrl-2];
-echo " Inhalt: ".$timeValues[$arrl-$countsPerDay ]." - ".$timeValues[$arrl-$countsPerDay];
-*/
-/* end of my changes */
-$valuesLast24Hours = array_slice($floatValues, -$countsPerDay);
-$valuesLastWeek = array_slice($floatValues, -$countsPerDay*7);
-// Merge date and time part together
-$labels = array_map(function($a, $b){
-	$dateString = $a . ' ' . $b . ' UTC';
-	return strtotime($dateString) * 1000;
-}, $result[1], $result[2]);
-// Create Points for Flot charting library
-$points = array_map(function($a, $b){
-	return array($a, $b);
-}, $labels, $floatValues);
-// Calculate average and min/max values
-$average = average($floatValues);
-$lowest = getMin($floatValues);
-$highest = getMax($floatValues);
-//echo "Zaehler: ".count($floatValues);
-$actualTemp =  $floatValues[count($floatValues)-1];
-$average24Hours = average($valuesLast24Hours);
-$lowest24Hours = getMin($valuesLast24Hours);
-$highest24Hours = getMax($valuesLast24Hours);
-$averageWeek = average($valuesLastWeek);
-$lowestWeek = getMin($valuesLastWeek);
-$highestWeek = getMax($valuesLastWeek);
-
-<?php
 $active_page = 'dashboard';
 
 include_once('./include/config.php');
@@ -194,6 +116,85 @@ $memory_percentage = round(($memory_used) / $memory_total * 100);
 //$memory_percentage = round(($memory_total-$memory_free) / $memory_total * 100);
 //https://unix.stackexchange.com/questions/152299/how-to-get-memory-usedram-used-using-linux-command
 //$memory_percentage = round(shell_exec("free | awk 'FNR == 3 {print $3/($3+$4)*100}'"));
+
+
+
+// Get average functions and all that stuff
+include 'include/functions.php';
+// Load the configuration
+$config = getConfig();
+// Load the temperature.log file
+$temperatureFile = file_get_contents('temperature.log');
+// Regex to capture format: 2013-07-22T21:30:01+0200;46.5
+$regex = "/^((?:[0-9]{2,4}-?){3})T((?:[0-9]{2}:?){3}).*?;([0-9.]*$)/im";
+preg_match_all($regex, $temperatureFile, $result);
+// Prepare the values
+$values = $result[3];
+$floatValues = array();
+foreach ($values as $value) {
+	$floatValue = floatval($value);
+
+	// Conversation to farenheit?
+	if ($config['unit'] == 'f') {
+		$floatValue = $floatValue * 9 / 5 + 32;	// Conversion to Farenheit
+	}
+
+	$floatValues[] = $floatValue;
+}
+/* get the updatetime from config and calc base 24*60/update
+ added by frama */
+$countsPerDay = 24*60/($config['updatetime']);
+/*
+echo "updatetime ".$config['updatetime'];
+#echo  "EintrÃ¤ge per Tag: ".$countsPerDay;
+$arrl = count($floatValues);
+echo "Länge: ".$arrl;
+echo " Inhalt: ".$floatValues[$arrl-1]." - ".$floatValues[$arrl-2];
+$times = $result[1];
+$timeValues = array();
+foreach ($times as $value) {
+        $timeValue = $value;
+        $timeValues[] = $timeValue;
+}
+$arrl = count($timeValues);
+echo " Länge: ".$arrl;
+echo " Inhalt: ".$timeValues[$arrl-1]." - ".$timeValues[$arrl-2];
+echo " Inhalt: ".$timeValues[$arrl-$countsPerDay ]." - ".$timeValues[$arrl-$countsPerDay];
+$times = $result[2];
+$timeValues = array();
+foreach ($times as $value) {
+        $timeValue = $value;
+        $timeValues[] = $timeValue;
+}
+$arrl = count($timeValues);
+echo " Länge: ".$arrl;
+echo " Inhalt: ".$timeValues[$arrl-1]." - ".$timeValues[$arrl-2];
+echo " Inhalt: ".$timeValues[$arrl-$countsPerDay ]." - ".$timeValues[$arrl-$countsPerDay];
+*/
+/* end of my changes */
+$valuesLast24Hours = array_slice($floatValues, -$countsPerDay);
+$valuesLastWeek = array_slice($floatValues, -$countsPerDay*7);
+// Merge date and time part together
+$labels = array_map(function($a, $b){
+	$dateString = $a . ' ' . $b . ' UTC';
+	return strtotime($dateString) * 1000;
+}, $result[1], $result[2]);
+// Create Points for Flot charting library
+$points = array_map(function($a, $b){
+	return array($a, $b);
+}, $labels, $floatValues);
+// Calculate average and min/max values
+$average = average($floatValues);
+$lowest = getMin($floatValues);
+$highest = getMax($floatValues);
+//echo "Zaehler: ".count($floatValues);
+$actualTemp =  $floatValues[count($floatValues)-1];
+$average24Hours = average($valuesLast24Hours);
+$lowest24Hours = getMin($valuesLast24Hours);
+$highest24Hours = getMax($valuesLast24Hours);
+$averageWeek = average($valuesLastWeek);
+$lowestWeek = getMin($valuesLastWeek);
+$highestWeek = getMax($valuesLastWeek);
 
 ?>
 <!DOCTYPE html>
