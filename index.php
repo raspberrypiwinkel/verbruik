@@ -201,6 +201,43 @@ include_once('./include/menu.php');
 					<div class="panel-heading">
 						<h3 class="panel-title">System Information<!--a href="?updated" target="_top" class="btn btn-success pull-right" style="margin:-6px -11px; color: white;"><i class="fa fa-refresh"></i></a--></h3>
 					</div>
+
+					<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+						<div class="panel-heading">
+							<h3 class="panel-title">Stroom verbruik vandaag</h3>
+						</div>
+						<div class="panel-body">
+
+						</div>
+					</div>
+
+					<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+						<div class="panel-heading">
+							<h3 class="panel-title">Gas verbruik vandaag/h3>
+						</div>
+						<div class="panel-body">
+						</div>
+					</div>
+
+					<!--<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+						<div class="panel-heading">
+							<h3 class="panel-title">Temperatuur Binnen</h3>
+						</div>
+						<div class="panel-body">
+
+						</div>
+					</div>-->
+
+					<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+						<div class="panel-heading">
+							<h3 class="panel-title">Temperatuur CPU 24H</h3>
+						</div>
+						<div class="panel-body">
+							<div id="day" style="height:300px" class="span9"></div>
+						</div>
+					</div>
+
+
 					<div class="panel-body">
 							<table class="table table-hover">
 							<tbody>
@@ -244,41 +281,6 @@ include_once('./include/menu.php');
 </tbody></table>
 						</div>
 					</div>
-
-				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
-					<div class="panel-heading">
-						<h3 class="panel-title">KWH 24 uur</h3>
-					</div>
-					<div class="panel-body">
-
-					</div>
-				</div>
-
-				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
-					<div class="panel-heading">
-						<h3 class="panel-title">Gas 24 uur</h3>
-					</div>
-					<div class="panel-body">
-					</div>
-				</div>
-
-				<!--<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
-					<div class="panel-heading">
-						<h3 class="panel-title">Temperatuur Binnen</h3>
-					</div>
-					<div class="panel-body">
-
-					</div>
-				</div>-->
-
-				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
-					<div class="panel-heading">
-						<h3 class="panel-title">Temperatuur CPU 24H</h3>
-					</div>
-					<div class="panel-body">
-						<div id="day" style="height:300px" class="span9"></div>
-					</div>
-				</div>
 
 				<!--<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
