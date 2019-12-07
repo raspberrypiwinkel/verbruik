@@ -128,7 +128,7 @@ $memory_percentage = round(($memory_used) / $memory_total * 100);
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="./static/images/raspberry.png" type="image/png" />
 	<link rel="icon" href="./static/images/raspberry.png" type="image/png" />
-	<title>GumCP Dashboard</title>
+	<title>Raspberrypiwinkel.nl Verbruiks App</title>
 	<link href="./static/css.php" rel="stylesheet" type="text/css">
 	<script src="./static/js.php" type="text/javascript">
 </script>
@@ -328,6 +328,48 @@ include_once('./include/menu.php');
 
 				</div>
 
+
+				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+					<div class="panel-heading">
+						<h3 class="panel-title">KWH 24 uur</h3>
+					</div>
+					<div class="panel-body">
+
+						<pre id="disks">  </pre>
+
+					</div>
+
+
+				</div>
+
+
+				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+					<div class="panel-heading">
+						<h3 class="panel-title">Gas 24 uur</h3>
+					</div>
+					<div class="panel-body">
+
+						<pre id="disks">  </pre>
+
+					</div>
+
+
+				</div>
+
+
+				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+					<div class="panel-heading">
+						<h3 class="panel-title">Buiten temperatuur</h3>
+					</div>
+					<div class="panel-body">
+
+						<pre id="disks">  </pre>
+
+					</div>
+
+
+				</div>
+
 				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
 						<h3 class="panel-title">Users</h3>
@@ -360,7 +402,7 @@ include_once('./include/menu.php');
 
 <footer class="footer">
 	<div class="container">
-		<p class="text-muted">Raspberrypiwinkel.nl Verbruik <a href="https://github.com/Raspberrypiwinkel/verbruik">GitHub</a>.</p>
+		<p class="text-muted">Raspberrypiwinkel.nl Verbruiks App <a href="https://github.com/Raspberrypiwinkel/verbruik">GitHub</a>.</p>
 	</div>
 </footer>
 <div id="dialog-placeholder"></div>
