@@ -1,5 +1,5 @@
 <?php
-	
+
 //make sure that php ssh in installed (sudo apt-get install php5-ssh2)
 define('SSH_PORT', '22'); //your ssh port, defailt is "22"
 define('SSH_USER', 'pi'); //your ssh username, default is "pi"
@@ -18,45 +18,50 @@ define('MEMORY_CALCULATION_METHOD', 2); //change to 1 to use the free -mo comman
 $gumcp_modules = array(
 	'services' => array(
 		'module_title' => 'Services',
-		'module_index_file_relative_path' => './services.php',
+		'module_index_file_relative_path' => './pages/services.php',
 		'module_active' => 1, //change to 1 to enable file manager, and 0 to disable it.
 	),
 	'processes' => array(
 		'module_title' => 'Power',
-		'module_index_file_relative_path' => './power.php',
+		'module_index_file_relative_path' => './pages/power.php',
 		'module_active' => 1, //change to 1 to enable file manager, and 0 to disable it.
 	),
 	'processes' => array(
 		'module_title' => 'Fossil',
-		'module_index_file_relative_path' => './fossil.php',
+		'module_index_file_relative_path' => './pages/fossil.php',
 		'module_active' => 1, //change to 1 to enable file manager, and 0 to disable it.
 	),
 	'processes' => array(
 		'module_title' => 'Processes',
-		'module_index_file_relative_path' => './processes.php',
+		'module_index_file_relative_path' => './pages/processes.php',
 		'module_active' => 1, //change to 1 to enable file manager, and 0 to disable it.
 	),
 	'phpinfo' => array(
 		'module_title' => 'PHP Info',
-		'module_index_file_relative_path' => './phpinfo.php',
+		'module_index_file_relative_path' => './pages/phpinfo.php',
 		'module_active' => 0, //change to 1 to enable file manager, and 0 to disable it.
 	),
 	'actions' => array(
 		'module_title' => 'Actions',
-		'module_index_file_relative_path' => './actions.php',
+		'module_index_file_relative_path' => './pages/actions.php',
 		'module_active' => 1, //change to 1 to enable file manager, and 0 to disable it.
 	),
 	'gpio' => array(
 		'module_title' => 'GPIO',
-		'module_index_file_relative_path' => './gpio.php',
+		'module_index_file_relative_path' => './pages/gpio.php',
 		'module_active' => 0, //change to 1 to enable file manager, and 0 to disable it.
 	),
 	'buttons' => array(
-		'module_title' => 'Buttons',
-		'module_index_file_relative_path' => './buttons.php',
+		'module_title' => 'Sysinfo',
+		'module_index_file_relative_path' => './pages/sysinfo.php',
 		'module_active' => 1, //change to 1 to enable file manager, and 0 to disable it.
 	),
-	
+	'buttons' => array(
+		'module_title' => 'Buttons',
+		'module_index_file_relative_path' => './pages/buttons.php',
+		'module_active' => 1, //change to 1 to enable file manager, and 0 to disable it.
+	),
+
 	//you can order your tehybug from https://www.tindie.com/stores/gumslone/
 	'tehybug' => array(
 		'module_title' => 'TeHyBug',
@@ -64,7 +69,7 @@ $gumcp_modules = array(
 		'module_active' => 0, //change to 1 to enable file manager, and 0 to disable it.
 		'module_show_in_iframe' => 1 //change to 0 show module directly, and 1 to show it in iframe.
 	),
-	
+
 	//third party modules with different licenses
 	'tinyfilemanager' => array(
 		'module_title' => 'File Manager',
@@ -111,7 +116,7 @@ if(LOGIN_REQUIRED==true)
 {
 	if(isset($_SESSION['LOGIN_USER']) && $_SESSION['LOGIN_USER']==md5(LOGIN_USER) && isset($_SESSION['LOGIN_PASS']) && $_SESSION['LOGIN_PASS'] == md5(LOGIN_PASS))
 	{
-		
+
 	}
 	else
 	{
