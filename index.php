@@ -187,9 +187,7 @@ $(function() {
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<?php
-include_once('./include/menu.php');
-?>
+					<?php include_once('./include/menu.php'); ?>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div><!--/.container-fluid -->
@@ -200,16 +198,16 @@ include_once('./include/menu.php');
 			<h3 class="panel-title">Stroom verbruik vandaag</h3>
 		</div>
 		<div class="panel-body">
-			<div id="day" style="height:300px" class="span9"></div>
+			<div id="day-stroom" style="height:300px" class="span9"></div>
 		</div>
 	</div>
 
 	<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 		<div class="panel-heading">
-			<h3 class="panel-title">Gas verbruik vandaag/h3>
+			<h3 class="panel-title">Gas verbruik vandaag</h3>
 		</div>
 		<div class="panel-body">
-			<div id="day" style="height:300px" class="span9"></div>
+			<div id="day-gas" style="height:300px" class="span9"></div>
 		</div>
 	</div>
 
@@ -224,7 +222,7 @@ include_once('./include/menu.php');
 
 	<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 		<div class="panel-heading">
-			<h3 class="panel-title">Temperatuur CPU 24H</h3>
+			<h3 class="panel-title">Temperatuur CPU vandaag</h3>
 		</div>
 		<div class="panel-body">
 			<div id="day" style="height:300px" class="span9"></div>
