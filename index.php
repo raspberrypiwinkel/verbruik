@@ -183,7 +183,7 @@ $(function() {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Raspberrypiwinkel.nl Verbruiks App</a>
+				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Verbruiks App</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -221,7 +221,8 @@ include_once('./include/menu.php');
 							<div class="col-xs-6 col-sm-3 text-center">
 								<span class="chart" data-percent="<?php echo $temp; ?>">
 									<span class="percent"><span id="temp"><?php echo $temp; ?></span><i>°C</i></span>
-									<span class="label">Temperature</span>
+									<span class="label">Cpu Temperature Last 24H</span>
+									<div id="day" style="height:300px" class="span9"></div>
 								</span>
 							</div>
 
@@ -358,6 +359,44 @@ include_once('./include/menu.php');
 <div id="dialog-placeholder"></div>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
+<script type="text/javascript">
+ $(document).ready(function() {
+	 var options = {
+		 xaxis: {
+			 mode: 	"time",
+			 format: "%d.%m.Y %H:%M"
+		 },
+		 yaxis: {
+			 tickFormatter: function(value) {
+				 return value.toFixed(1) + ' <?php echo strtoupper($config['unit'])?>&deg;';
+			 }
+		 },
+		 grid: {
+			 hoverable: true,
+			 clickable: true,
+		 },
+		 tooltip: true,
+		 tooltipOpts: {
+			 content: "%y - %x"
+		 }
+	 };
+	 var dataDay = [{
+		 color: "rgb(212,62, 48)",
+		 data: <?php echo json_encode($pointsDay);?>
+	 }];
+	 $.plot($("#day"), dataDay, options);
+	 var dataWeek = [{
+		 color: "rgb(212,62, 48)",
+		 data: <?php echo json_encode($pointsWeek);?>
+	 }];
+	 $.plot($("#week"), dataWeek, options);
+	 var dataOverall = [{
+		 color: "rgb(212,62, 48)",
+		 data: <?php echo json_encode($points);?>
+	 }];
+	 $.plot($("#overall"), dataOverall, options);
+ });
+	 </script>
 </body>
 </body>
 </html>
