@@ -211,35 +211,6 @@ include_once('./include/menu.php');
 								</span>
 							</div>
 
-							<!--div class="col-xs-6 col-sm-3 text-center">
-								<span class="chart" data-percent="<?php echo ($clock/1000)*100; ?>">
-									<span class="percent"><?php echo $clock; ?><i>MHz</i></span>
-									<span class="label">CPU Clock</span>
-								</span>
-							</div-->
-
-							<div class="col-xs-6 col-sm-3 text-center">
-								<span class="chart" data-percent="<?php echo $temp; ?>">
-									<span class="percent"><span id="temp"><?php echo $temp; ?></span><i>°C</i></span>
-									<span class="label">Temperature</span>
-								</span>
-							</div>
-
-							<div class="col-xs-6 col-sm-3 text-center">
-								<span class="chart" data-percent="<?php echo $disk_percentage; ?>">
-									<span class="percent"><span id="disk_percentage"><?php echo $disk_percentage; ?></span><i>%</i></span>
-									<span class="label">Local disk space</span>
-								</span>
-							</div>
-
-							<div class="col-xs-6 col-sm-3 text-center">
-								<span class="chart" data-percent="<?php echo $memory_percentage; ?>">
-									<span class="percent"><span id="memory_percentage"><?php echo $memory_percentage; ?></span><i>%</i></span>
-									<span class="label">Real Memory</span>
-								</span>
-							</div>
-
-
 							<table class="table table-hover">
 							<tbody>
 								<tr>
@@ -289,7 +260,7 @@ include_once('./include/menu.php');
 						<h3 class="panel-title">KWH 24 uur</h3>
 					</div>
 					<div class="panel-body">
-						<pre id="disks">  </pre>
+
 					</div>
 				</div>
 
@@ -298,17 +269,17 @@ include_once('./include/menu.php');
 						<h3 class="panel-title">Gas 24 uur</h3>
 					</div>
 					<div class="panel-body">
-						<pre id="disks">  </pre>
 					</div>
 				</div>
 
-				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+				<!--<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
 						<h3 class="panel-title">Temperatuur Binnen</h3>
 					</div>
 					<div class="panel-body">
+
 					</div>
-				</div>
+				</div>-->
 
 				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
@@ -319,13 +290,13 @@ include_once('./include/menu.php');
 					</div>
 				</div>
 
-				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+				<!--<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
 						<h3 class="panel-title">Temperatuur Buiten</h3>
 					</div>
 					<div class="panel-body">
 					</div>
-				</div>
+				</div>-->
 
 				<div id="top-processes" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
