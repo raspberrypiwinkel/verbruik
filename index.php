@@ -202,15 +202,6 @@ include_once('./include/menu.php');
 						<h3 class="panel-title">System Information<!--a href="?updated" target="_top" class="btn btn-success pull-right" style="margin:-6px -11px; color: white;"><i class="fa fa-refresh"></i></a--></h3>
 					</div>
 					<div class="panel-body">
-
-						<div class="row" style="margin: 0;">
-							<div class="col-xs-6 col-sm-3 text-center">
-								<span class="chart" data-percent="<?php echo $cpuusage; ?>">
-									<span class="percent"><span id="cpuusage"><?php echo $cpuusage; ?></span><i>%</i></span>
-									<span class="label">CPU Usage</span>
-								</span>
-							</div>
-
 							<table class="table table-hover">
 							<tbody>
 								<tr>
