@@ -133,7 +133,7 @@ $memory_percentage = round(($memory_used) / $memory_total * 100);
 	<script src="./static/js.php" type="text/javascript">
 </script>
 	<script type="text/javascript">
-var timeout = setInterval(reloadData, 10000);    
+var timeout = setInterval(reloadData, 10000);
 function reloadData () {
 	$.getJSON( "./ajax.php?action=server_info", function( data ) {
 		if(data!=null && data['top']!=null)
@@ -147,14 +147,11 @@ function reloadData () {
 			});
 		}
 	});
-    
+
 }
 
 
 $(function() {
-
-
-
 
 		$(".chart").easyPieChart({
 			barColor: function(b) {
@@ -186,7 +183,7 @@ $(function() {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />GumCP</a>
+				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Verbruiks App</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -278,99 +275,52 @@ include_once('./include/menu.php');
 									<td style="width:30%;vertical-align:middle; padding:8px;"><strong>Real memory</strong></td>
 									<td style="width:70%; vertical-align:middle; padding:8px;"><span data-id="sysinfo_real_memory"><span id="memory_total"><?php echo $memory_total; ?></span> KiB total / <span id="memory_used"><?php /*echo ($memory_used - $memory_buffers - $memory_cached);*/ echo ($memory_used); ?></span> KiB used</span></td>
 								</tr>
-
 								<tr>
 									<td style="width:30%;vertical-align:middle; padding:8px;"><strong>Local disk space</strong></td>
 									<td style="width:70%; vertical-align:middle; padding:8px;"><span data-id="sysinfo_disk_space"><span id="disk_total"><?php echo $disk_total; ?></span> GB total / <span id="disk_free"><?php echo $disk_free; ?></span> GB free / <span id="disk_used"><?php echo $disk_used; ?></span> GB used</span></td>
 								</tr>
-
-
-
-
 </tbody></table>
-
-
-
-
-
-
-
-
-
 						</div>
-
-
-
 					</div>
-
-
 				</div>
-
-
-
-
-
-				<div id="top-processes" class="panel panel-default" style="margin-bottom: 5px">
-					<div class="panel-heading">
-						<h3 class="panel-title">Top Processes</h3>
-					</div>
-					<div class="panel-body">
-
-						<pre id="top"><?php echo $top; ?></pre>
-
-
-
-
-
-
-					</div>
-
-
-				</div>
-
 
 				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
 						<h3 class="panel-title">KWH 24 uur</h3>
 					</div>
 					<div class="panel-body">
-
 						<pre id="disks">  </pre>
-
 					</div>
-
-
 				</div>
-
 
 				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
 						<h3 class="panel-title">Gas 24 uur</h3>
 					</div>
 					<div class="panel-body">
-
 						<pre id="disks">  </pre>
-
 					</div>
-
-
 				</div>
-
 
 				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
 						<h3 class="panel-title">Buiten temperatuur</h3>
 					</div>
 					<div class="panel-body">
-
 						<pre id="disks">  </pre>
-
 					</div>
-
-
 				</div>
 
-				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+				<div id="top-processes" class="panel panel-default" style="margin-bottom: 5px">
+					<div class="panel-heading">
+						<h3 class="panel-title">Top Processes</h3>
+					</div>
+					<div class="panel-body">
+						<pre id="top"><?php echo $top; ?></pre>
+					</div>
+				</div>
+
+				<!--<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
 						<h3 class="panel-title">Users</h3>
 					</div>
@@ -381,7 +331,7 @@ include_once('./include/menu.php');
 					</div>
 
 
-				</div>
+				</div>-->
 
 				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
