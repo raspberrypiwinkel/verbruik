@@ -360,7 +360,7 @@ include_once('./include/menu.php');
 
 <footer class="footer">
 	<div class="container">
-		<p class="text-muted">GumCP <a href="https://github.com/gumslone/GumCP">GitHub</a>. <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCWHQPACTXV5N"><img src="./static/images/Donate-PayPal-green.svg"/></a></p>
+		<p class="text-muted">Raspberrypiwinkel.nl Verbruik <a href="https://github.com/Raspberrypiwinkel/verbruik">GitHub</a>.</p>
 	</div>
 </footer>
 <div id="dialog-placeholder"></div>

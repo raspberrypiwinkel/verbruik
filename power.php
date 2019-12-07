@@ -1,5 +1,5 @@
 <?php
-$active_page = 'phpinfo';
+$active_page = 'power';
 
 	include_once('./include/config.php');
 
@@ -59,7 +59,7 @@ $phpinfo = $matches[1];
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />RasPi GumCP</a>
+				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Raspberry Pi Winkel Verbuik</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -70,34 +70,20 @@ $phpinfo = $matches[1];
 			</div><!--/.nav-collapse -->
 		</div><!--/.container-fluid -->
 	</nav>
-
-	
-
 				<div id="system-status" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
-						<h3 class="panel-title">PHP info</h3>
+						<h3 class="panel-title">Stroom verbruik</h3>
 					</div>
 					<div class="panel-body">
-
-						<?php echo $phpinfo; ?>
-						
-						
-						
-						
-								
-								
-								
+					
 					</div>
-				
-				
+	
 				</div>
-				
-				
 		
 </div>
 <footer class="footer">
 	<div class="container">
-		<p class="text-muted">GumCP <a href="https://github.com/gumslone/GumCP">GitHub</a>. <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCWHQPACTXV5N"><img src="./static/images/Donate-PayPal-green.svg"/></a></p>
+		<p class="text-muted"></p>
 	</div>
 </footer>
 <div id="dialog-placeholder"></div>
