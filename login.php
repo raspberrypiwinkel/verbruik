@@ -4,9 +4,9 @@ if(isset($_REQUEST['action']))
 	switch ($_REQUEST['action']) {
 		case 'incorrect_login':
 			$message = 'Incorrect Username/Password combination';
-			
+
 		break;
-		
+
 	}
 }
 
@@ -21,14 +21,14 @@ if(isset($_REQUEST['action']))
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="./static/images/raspberry.png" type="image/png" />
 	<link rel="icon" href="./static/images/raspberry.png" type="image/png" />
-	<title>GumCP Please sign in</title>
+	<title>Raspberrypiwinkel.nl verbruiks app login</title>
 	<link href="./static/css.php" rel="stylesheet" type="text/css">
 	<script src="./static/js.php" type="text/javascript"></script>
 </head>
 
 <body>
 <div class="container">
-	
+
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -38,17 +38,17 @@ if(isset($_REQUEST['action']))
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />GumCP</a>
+				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Verbruik</a>
 			</div>
 
 		</div><!--/.container-fluid -->
 	</nav>
 
-	
+
 
 				<div id="system-status" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
-						<h3 class="panel-title">Please sign in</h3>
+						<h3 class="panel-title">Login</h3>
 					</div>
 					<div class="panel-body">
 
@@ -56,11 +56,8 @@ if(isset($_REQUEST['action']))
 							if(!empty($message))
 							{
 								echo '<div class="alert alert-danger" role="alert" style="margin-bottom:20px;">'.$message.'</div>';
-							}	
+							}
 						?>
-						
-						
-
 							<form method="post" action="./index.php" class="form-signin">
 								<div class="form-group row">
 									<label for="login_user" class="col-sm-2 form-control-label">Username</label>
@@ -76,20 +73,14 @@ if(isset($_REQUEST['action']))
 								</div>
 								<button type="submit" class="btn btn-primary">Login</button>
 							</form>
-							
-						
-								
+
 					</div>
-				
-				
 				</div>
-				
-				
-		
+
 </div>
 <footer class="footer">
 	<div class="container">
-		<p class="text-muted">GumCP <a href="https://github.com/gumslone/GumCP">GitHub</a>. <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VCWHQPACTXV5N"><img src="./static/images/Donate-PayPal-green.svg"/></a></p>
+		<p class="text-muted">Raspberrypiwinkel.nl Verbruiks App GitHub.</p>
 	</div>
 </footer>
 <div id="dialog-placeholder"></div>
