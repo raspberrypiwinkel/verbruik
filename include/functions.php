@@ -12,7 +12,7 @@ function getConfig()
 		$localConfig = include dirname(__FILE__) . '/../local.config.php';
 		$config = array_merge($config, $localConfig);
 	}
-	
+
 	return $config;
 }
 
@@ -26,7 +26,7 @@ function average($values) {
 		$total += $temperature;
 		$count++;
 	}
-	
+
 	return number_format(round($total / $count, 1), 1);
 }
 
@@ -59,7 +59,7 @@ function getMax($values) {
 }
 
 /**
- * Sends a notification email to the email address defined 
+ * Sends a notification email to the email address defined
  * in the configuration file.
  * If no email address is defined, this method files silently.
  * @param $temp The measured temperature
@@ -73,22 +73,22 @@ function sendEmailNotification($temp, $addresses = array())
 	$subject = "PiTemp Notification ".$temp."C";
 	$message = createNotificationText($temp);
 	$headers = "From: PiTemp <notification@pitemp.local> \r\n";
-	
+
 	// Send the mail!
 	//mail($to, $subject, $message, $headers);
-	
+
 	//send mail with attachement
-	$attachement = topToLog();	
+	$attachement = topToLog();
 	sendMailWithAttachement($to, $subject, $message, $headers, $attachement);
 }
 
 /**
- * Sends a notification over pushover.net to the user 
- * that is defined in the configuration file. 
+ * Sends a notification over pushover.net to the user
+ * that is defined in the configuration file.
  * This method uses a small script on our server to "hide" our
- * application key. 
- * The script used on our server is also available on github if you 
- * want to review it. 
+ * application key.
+ * The script used on our server is also available on github if you
+ * want to review it.
  * @todo Add Github URL to server script
  * @param $temp The measured temperature
  * @param $userKey The Pushover User key.
@@ -98,28 +98,28 @@ function sendPushoverNotification($temp, $userKey)
 	// Get the url to the PiTemp Server
 	$config = getConfig();
 	$pitempServer = $config['pi_temp_server'];
-	
+
 	// Initialize cURL for the request
 	$curl = curl_init();
-	
+
 	// Set the options
 	curl_setopt_array($curl, array(
 		CURLOPT_RETURNTRANSFER => 1,
 		CURLOPT_URL => $pitempServer . "?temp=" . $temp . "&userkey=" . $userKey
 	));
-	
+
 	// Send the request
 	$response = curl_exec($curl);
-	
+
 	// @todo Add some sort of log to log failed attempts.
-	
+
 	// Close the request
 	curl_close($curl);
 }
 
 /**
  * Sends a notification via pushbullet.com to the device
- * that is defined in the configuration file. 
+ * that is defined in the configuration file.
  * @param $temp The measured temperature
  * @param $deviceid The Pushbullet device ID.
  * @param $apikey The Pushbullet API key.
@@ -131,9 +131,9 @@ function sendPushbulletNotification($temp, $deviceid, $apikey)
                     'device_id' => $deviceid,
                     'type' => 'note',
                     'title' => 'PiTemp notification',
-                    'body' => createNotificationText($temp) 
+                    'body' => createNotificationText($temp)
 	);
-					
+
 	$post_data_string = http_build_query($post_data);
 
 	$ch = curl_init('https://www.pushbullet.com/api/pushes');
@@ -153,7 +153,7 @@ function sendPushbulletNotification($temp, $deviceid, $apikey)
  * @todo Implement independent from language
  * @param $interface The network interface
 */
-function getServerAddress($interface) 
+function getServerAddress($interface)
 {
     // Parse the result of ifconfig to get the ip address
     $ifconfig = shell_exec('/sbin/ifconfig ' . $interface);
@@ -163,23 +163,23 @@ function getServerAddress($interface)
 
 /**
  * Creates the notification text
- * @param float $temp The temperature in degree C. 
+ * @param float $temp The temperature in degree C.
  */
 function createNotificationText($temp)
 {
 	$config = getConfig();
 	$notifiactionConfig = $config['notification'];
-	
+
 	$message = "Your Raspberry Pi's temperature raised above your defined maximum temperature. \n\n";
-	
+
 	// Add Temp
 	$message .= "Current temperature: " . $temp . "C\r\n";
-	
+
 	// Add (optional) hostname
 	if ($notifiactionConfig['show_hostname']) {
 		$message .= "Hostname: " . gethostname() . "\r\n";
 	}
-	
+
 	// Add (optional) IP address
 	if ($notifiactionConfig['show_ip_address']) {
 		$message .= "IP Address: " . getServerAddress('eth0') . "\r\n";
@@ -190,17 +190,16 @@ function createNotificationText($temp)
 }
 /**
 
-	http://eureka.ykyuen.info/2010/02/16/php-send-attachmemt-with-php-mail/
 */
 function sendMailWithAttachement($mail_to, $subject, $message, $headers, $attachement)
 {
 /* Email Details */
-  $from_mail = "frama1038@gmail.com";
-  $from_name = "pi@raspberry";
-  $replyto = "frama1038@gmail.com";
+  $from_mail = "info@Raspberrypiwinkel.nl";
+  $from_name = "verbruik@Raspberrypiwinkel";
+  $replyto = "info@Raspberrypiwinkel.nl";
   $files = "top.txt";
   $path = "/var/log/myLogs/";
-  
+
   /*****************/
   	$filename  = $files;
 	$file      = $path.$filename;
@@ -211,12 +210,12 @@ function sendMailWithAttachement($mail_to, $subject, $message, $headers, $attach
 
 	$content = chunk_split(base64_encode($content));
 	$uid     = md5(uniqid(time()));
-	$name    = basename($file);				
+	$name    = basename($file);
 	$header    = "From: " . $from_name . " <" . $from_mail . ">\n";
 	$header .= "Reply-To: " . $replyto . "\n";
 	$header .= "MIME-Version: 1.0\n";
 	$header .= "Content-Type: multipart/mixed; boundary=\"" . $uid . "\"\n\n";
-	
+
 	$emessage = "--" . $uid . "\n";
 	$emessage .= "Content-type:text/html; charset=iso-8859-1\n";
 	$emessage .= "Content-Transfer-Encoding: 7bit\n\n";
@@ -227,11 +226,11 @@ function sendMailWithAttachement($mail_to, $subject, $message, $headers, $attach
 	$emessage .= "Content-Disposition: attachment; filename=\"" . $filename . "\"\n\n";
 	$emessage .= $content . "\n\n";
 	$emessage .= "--" . $uid . "--";
-	     
+
   /**
   send mail and check if it could sent
-	*/   
-  if (mail($mail_to, $subject, $emessage, $header)) {  
+	*/
+  if (mail($mail_to, $subject, $emessage, $header)) {
 	global $m_temp;
 	$date =date("Y-m-d H:i:s");
 	$text = $date." - PiTemp:= $m_temp - mail couldn't sent!\n";
@@ -239,7 +238,7 @@ function sendMailWithAttachement($mail_to, $subject, $message, $headers, $attach
 	$handle = @fopen($logfile, 'a') ;
 	fwrite($handle, $text);
 	fclose($handle);
-  } 	
+  }
 }
 
 /**

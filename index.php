@@ -305,6 +305,10 @@ $(function() {
 		</div>
 		<div class="panel-body">
 			<div id="day" style="height:300px" class="span9"></div>
+			<p>Nu: <strong class="pull-right"><?php echo $actualTemp?> C&deg;</strong></p>
+			<p>Gemiddeld: <strong class="pull-right"><?php echo $average24Hours;?> C&deg;</strong></p>
+			<p>Laagst:	<strong class="pull-right"><?php echo $lowest24Hours?> C&deg;</strong></p>
+			<p>Hoogst: <strong class="pull-right"><?php echo $highest24Hours?> C&deg;</strong></p>
 		</div>
 	</div>
 
