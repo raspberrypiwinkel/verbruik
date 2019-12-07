@@ -244,7 +244,6 @@ include_once('./include/menu.php');
 </tbody></table>
 						</div>
 					</div>
-				</div>
 
 				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
