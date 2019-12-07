@@ -1,8 +1,8 @@
 <?php
 $active_page = 'services';
 
-	include_once('./include/config.php');
-	
+	include_once('../include/config.php');
+
 	$services = shell_exec('/usr/sbin/service --status-all');
 	$service_arr = preg_split("/\\r\\n|\\r|\\n/", $services);
 
@@ -19,10 +19,10 @@ $active_page = 'services';
 		{
 			$a = str_replace("[ - ]", '', $a);
 			if(!empty($a))$inactive_services_arr[] = trim($a);
-			
+
 		}
 	}
-	
+
 
 
 ?>
@@ -40,12 +40,12 @@ $active_page = 'services';
 	<link href="./static/css.php" rel="stylesheet" type="text/css">
 	<script src="./static/js.php" type="text/javascript">
 </script>
-	
+
 </head>
 
 <body>
 <div class="container">
-	
+
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -55,7 +55,7 @@ $active_page = 'services';
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />GumCP</a>
+				<a class="navbar-brand" href="./index.php"><img src="./static/images/raspberry.png" />Verbruiks App</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -67,7 +67,7 @@ $active_page = 'services';
 		</div><!--/.container-fluid -->
 	</nav>
 
-	
+
 
 				<div id="system-status" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
@@ -77,7 +77,7 @@ $active_page = 'services';
 
 						<table class="table table-hover">
 						<?php
-							
+
 							foreach($active_services_arr AS $a)
 							{
 								echo '<tr><td>'.$a.'</td><td><form method="post" action="./actions.php" style="display:inline-block;"><input type="hidden" name="sname" value="'.$a.'"><input type="hidden" class="form-control" name="action" value="stop_sname"><button type="submit" class="btn btn-xs btn-danger" onclick="return confirm(\'Are you sure to stop '.$a.'?\')">Stop</button></form></td></tr>';
@@ -86,12 +86,12 @@ $active_page = 'services';
 						</table>
 
 					</div>
-				
-				
+
+
 				</div>
-				
-				
-				
+
+
+
 				<div id="system-status" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
 						<h3 class="panel-title">Inactive System Services</h3>
@@ -100,22 +100,22 @@ $active_page = 'services';
 
 						<table class="table table-hover">
 						<?php
-							
+
 							foreach($inactive_services_arr AS $a)
 							{
 								echo '<tr><td>'.$a.'</td><td><form method="post" action="./actions.php" style="display:inline-block;"><input type="hidden" name="sname" value="'.$a.'"><input type="hidden" class="form-control" name="action" value="start_sname"><button type="submit" class="btn btn-xs btn-success" onclick="return confirm(\'Are you sure to start '.$a.'?\')">Start</button></form></td></tr>';
 							}
 						?>
 						</table>
-						
+
 					</div>
-				
-				
+
+
 				</div>
-				
-				
-				
-		
+
+
+
+
 </div>
 <footer class="footer">
 	<div class="container">
