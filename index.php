@@ -304,10 +304,9 @@ include_once('./include/menu.php');
 
 				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
 					<div class="panel-heading">
-						<h3 class="panel-title">Buiten temperatuur</h3>
+						<h3 class="panel-title">Temperatuur Binnen</h3>
 					</div>
 					<div class="panel-body">
-						<pre id="disks">  </pre>
 					</div>
 				</div>
 
@@ -317,6 +316,14 @@ include_once('./include/menu.php');
 					</div>
 					<div class="panel-body">
 						<div id="day" style="height:300px" class="span9"></div>
+					</div>
+				</div>
+
+				<div id="active-users" class="panel panel-default" style="margin-bottom: 5px">
+					<div class="panel-heading">
+						<h3 class="panel-title">Temperatuur Buiten</h3>
+					</div>
+					<div class="panel-body">
 					</div>
 				</div>
 
@@ -366,6 +373,61 @@ include_once('./include/menu.php');
 </footer>
 <div id="dialog-placeholder"></div>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Javascript
+================================================== -->
+<script src="./static/js/jquery.js"></script>
+<script src="./static/js/bootstrap.min.js"></script>
+<script src="./static/js/jquery.flot.min.js"></script>
+<script src="./static/js/jquery.flot.time.min.js"></script>
+<script src="./static/js/jquery.flot.tooltip.min.js"></script>
+
+<?php
+
+// Prepare the data
+$pointsDay = array_slice($points, -$countsPerDay);
+$pointsWeek = array_slice($points, -$countsPerDay*7);
+//echo "Test: ".json_encode($pointsDay);//[unixtimestamp, value]
+?>
+
+<script type="text/javascript">
+$(document).ready(function() {
+var options = {
+	xaxis: {
+		mode: 	"time",
+		format: "%d.%m.Y %H:%M"
+	},
+	yaxis: {
+		tickFormatter: function(value) {
+			return value.toFixed(1) + ' <?php echo strtoupper($config['unit'])?>&deg;';
+		}
+	},
+	grid: {
+		hoverable: true,
+		clickable: true,
+	},
+	tooltip: true,
+	tooltipOpts: {
+		content: "%y - %x"
+	}
+};
+var dataDay = [{
+	color: "rgb(212,62, 48)",
+	data: <?php echo json_encode($pointsDay);?>
+}];
+$.plot($("#day"), dataDay, options);
+var dataWeek = [{
+	color: "rgb(212,62, 48)",
+	data: <?php echo json_encode($pointsWeek);?>
+}];
+$.plot($("#week"), dataWeek, options);
+var dataOverall = [{
+	color: "rgb(212,62, 48)",
+	data: <?php echo json_encode($points);?>
+}];
+$.plot($("#overall"), dataOverall, options);
+});
+</script>
 
 </body>
 </body>
